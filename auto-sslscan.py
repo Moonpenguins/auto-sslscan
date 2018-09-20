@@ -10,6 +10,7 @@
 import os
 import subprocess
 import sys
+import random
 from libnmap.process import NmapProcess
 from libnmap.parser import NmapParser, NmapParserException
 
@@ -17,20 +18,30 @@ instructions =  "auto-sslscan - v0.4 ( https://github.com/attackdebris/auto-ssls
                 "\nUSAGE: auto-sslscan.py [nmap-ouput.xml] [output-file]" 
 
 if len(sys.argv) <3 or sys.argv[1] == "-h" or sys.argv[1] == "--h" or sys.argv[1] == "-help" or sys.argv[1] == "--help":
-        print instructions
+        print(instructions)
         sys.exit()
 elif len(sys.argv) >3:
-	print instructions
+	print(instructions)
 	sys.exit()
 elif len(sys.argv) ==3:
 	nmapxml = sys.argv[1]
 	myfile = sys.argv[2]
 	f = open(myfile, 'w')
-	print >> f, "===================================================================="
-	print >> f, "auto-sslscan - v0.4 ( https://github.com/attackdebris/auto-sslscan )"
-	print >> f, "====================================================================\n"
+	print >> f, "================================================================================="
+	print >> f, "auto-sslscan (acsn custom) - v0.5 ( https://github.com/attackdebris/auto-sslscan )"
+	print >> f, "=================================================================================\n"
 	f.close
-	temp = ".tmp-auto-sslscan"
+	numList = open(sys.argv[2] + "id", 'w')
+	idNum = random.randint(0, 99999999)
+	matchFound = True
+	while matchFound is True:
+		if idNum.__str__() in open(sys.argv[2] + "id").read():
+			break
+		else:
+			print >> numList, idNum
+			matchFound = False
+
+	temp = ".tmp-auto-sslscan" + idNum.__str__()
 	sslservices = myfile.replace('.txt', '')+"-ssl-services.txt"
 	f = open(temp, 'w')
 	f.close

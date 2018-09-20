@@ -1,5 +1,7 @@
 # Auto-sslscan
 
+Includes lazy hacky fix for multiple instances via xargs to work
+
 Auto-sslscan is a python script designed to automate the process of conducting ssl scanning via sslcan (https://github.com/rbsec/sslscan).
 
 The Auto-sslscan script parses an nmap.xml output file, extracts all SSL services and automatically performs an sslscan of them.
@@ -7,7 +9,7 @@ The Auto-sslscan script parses an nmap.xml output file, extracts all SSL service
 
 ## Installation
 
-git clone https://github.com/attackdebris/auto-sslscan.git
+git clone https://github.com/Moonpenguins/auto-sslscan/
 
 ### Prerequisites 
 

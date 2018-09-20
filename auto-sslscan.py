@@ -14,7 +14,7 @@ import random
 from libnmap.process import NmapProcess
 from libnmap.parser import NmapParser, NmapParserException
 
-instructions =  "auto-sslscan - v0.4 ( https://github.com/attackdebris/auto-sslscan )\n" +\
+instructions =  "auto-sslscan (xargs edition) - v0.5 ( https://github.com/attackdebris/auto-sslscan )\n" +\
                 "\nUSAGE: auto-sslscan.py [nmap-ouput.xml] [output-file]" 
 
 if len(sys.argv) <3 or sys.argv[1] == "-h" or sys.argv[1] == "--h" or sys.argv[1] == "-help" or sys.argv[1] == "--help":
@@ -28,7 +28,7 @@ elif len(sys.argv) ==3:
 	myfile = sys.argv[2]
 	f = open(myfile, 'w')
 	print >> f, "================================================================================="
-	print >> f, "auto-sslscan (acsn custom) - v0.5 ( https://github.com/attackdebris/auto-sslscan )"
+	print >> f, "auto-sslscan (xargs edition) - v0.5 ( https://github.com/attackdebris/auto-sslscan )"
 	print >> f, "=================================================================================\n"
 	f.close
 	numList = open(sys.argv[2] + "id", 'w')
@@ -38,7 +38,7 @@ elif len(sys.argv) ==3:
 		if idNum.__str__() in open(sys.argv[2] + "id").read():
 			break
 		else:
-			print >> numList, idNum
+			print > numList, idNum
 			matchFound = False
 
 	temp = ".tmp-auto-sslscan" + idNum.__str__()
@@ -47,7 +47,7 @@ elif len(sys.argv) ==3:
 	f.close
 	f = open(sslservices, 'w')
 	f.close
-	print "auto-sslscan - v0.4 ( https://github.com/attackdebris/auto-sslscan )\n"
+	print "auto-sslscan - v0.5 ( https://github.com/attackdebris/auto-sslscan )\n"
 
 def report_parser(report):
     ''' Parse the Nmap XML report '''
